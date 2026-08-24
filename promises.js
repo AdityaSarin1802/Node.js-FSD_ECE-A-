@@ -55,6 +55,6 @@ async function getUser(){
     const user = await fetchUserData();
     console.log(user);
 } catch(error){
-    console.log(error.message);
+    console.log(`Error: ${error.message}`);
 }}
 getUser();
