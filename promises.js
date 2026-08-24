@@ -1,14 +1,16 @@
-const promise1 = new Promise((resolve, reject) => {
-    let success = true
-    if (success) {
-        resolve({
-            id: 2930209, username: "John Doe"
-        });
-    }
-    else {
-        reject(new Error("Data not fetched"));
-    }
-})
+function fetchUserData() {
+    new Promise((resolve, reject) => {
+         let success = true
+         if (success) {
+            resolve({
+                id: 2930209, username: "John Doe"
+            });
+        }
+        else {
+            reject(new Error("Data not fetched"));
+        }
+    })
+}
 
 // promise1.then((response)=>{
 //     console.log(response);
@@ -40,10 +42,19 @@ const promise1 = new Promise((resolve, reject) => {
 //     console.log(error.message);
 // })
 
-promise1.then((response)=>{
-    return response
-}).then((response2)=>{
-    console.log(response2.username);
-}).catch((error)=>{
+// promise1.then((response)=>{
+//     return response
+// }).then((response2)=>{
+//     console.log(response2.username);
+// }).catch((error)=>{
+//     console.log(error.message);
+// })
+
+async function getUser(){
+    try{
+    const user = await fetchUserData();
+    console.log(user);
+} catch(error){
     console.log(error.message);
-})
+}}
+getUser();
