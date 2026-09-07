@@ -16,3 +16,9 @@ readStream.on("end", () => {
 //create a writable stream
 const writeStream = fs.createWriteStream("./output.txt")
 writeStream.write("Hello World\n")
+writeStream.on("finish", () => {
+    console.log("Data has been written")
+})
+writeStream.on("error", (error) => {
+    console.log("Error: ",error.message)
+})
