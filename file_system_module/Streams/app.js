@@ -22,3 +22,5 @@ writeStream.on("finish", () => {
 writeStream.on("error", (error) => {
     console.log("Error: ",error.message)
 })
+
+readStream.pipe(writeStream)
