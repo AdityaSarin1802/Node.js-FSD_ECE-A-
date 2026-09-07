@@ -6,3 +6,6 @@ readStream.on("data", (chunk) => {
     console.log("Data Received");
     console.log("Data",chunk)
 })
+readStream.on("error", (error) => {
+    console.log("Error: ",error.message)
+})
