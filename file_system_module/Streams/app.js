@@ -9,3 +9,10 @@ readStream.on("data", (chunk) => {
 readStream.on("error", (error) => {
     console.log("Error: ",error.message)
 })
+readStream.on("end", () => {
+    console.log("END")
+})
+
+//create a writable stream
+const writeStream = fs.createWriteStream("./output.txt")
+writeStream.write("Hello World\n")
