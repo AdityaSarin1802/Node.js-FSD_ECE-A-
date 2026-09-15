@@ -6,8 +6,11 @@ const server=http.createServer((req,res)=>{
     if(req.url === "/"){
         res.end("Ghr se Namaste");
     }
+    else if(req.url === "/about"){
+        res.end("About Page");
+    }
 })
 
 server.listen(8000,"127.0.0.1",()=>{
-    console.log("Server is running on port http://127.0.0.1:8000");
+    console.log("Server is running on port http://127.0.0.1/8000/");
 })
