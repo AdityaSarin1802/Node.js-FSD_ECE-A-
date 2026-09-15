@@ -68,6 +68,8 @@ const server = http.createServer((req, res) => {
 
         res.end('404 - Page Not Found');
     }
+
+    const filename= fs.readFileSync('./about.html');
 });
 
 server.listen(5500, "127.0.0.1", () => {

@@ -1,19 +1,26 @@
-import http from 'http'
-const server=http.createServer((req,res)=>{
-    console.log("Yoooooooö");
-    console.log(req.url)
-    res.end("Hello from the server");
-    if(req.url === "/"){
-        res.end("Ghr se Namaste");
-    }
-    else if(req.url === "/about"){
-        res.end("About Page");
-    }
-    else if(req.url === "/contact"){
-        res.end("Contact Page");
-    }
-})
+const http = require('http');
+const fs = require('fs');
 
-server.listen(8000,"127.0.0.1",()=>{
-    console.log("Server is running on port http://127.0.0.1/8000/");
-})
+const data = fs.readFileSync('contact.html', 'utf8');
+const data1 = fs.readFileSync('about.html', 'utf8');
+const server = http.createServer((req, res) => {
+  console.log('Yaaaaaaaaaaaa');
+  console.log(req.url);
+
+  if (req.url === '/') {
+    res.end('This is the home page');
+  } else if (req.url === '/about') {
+    res.end(data1);
+  }  else if (req.url === '/contact') {
+    res.end(data);
+  }  else if (req.url === '/services.html') {
+    const data2 = fs.readFileSync('services.html', 'utf8');
+    res.end(data2);
+  } else {
+    res.end('Page not found');
+  }
+});
+
+server.listen(5500, '127.0.0.1', () => {
+  console.log('Server is running on http://127.0.0.1:5500/');
+});
