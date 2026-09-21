@@ -7,6 +7,10 @@
 const http = require('http');
 const server= http.createServer((req,res)=>{
 
+    res.writeHead(200, {
+        'Content-Type': 'text/plain'
+    });
+
     if(req.method==='GET'){
         res.end('This is a GET request')
     }else if(req.method==='POST'){
