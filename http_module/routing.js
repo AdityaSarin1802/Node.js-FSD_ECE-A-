@@ -24,8 +24,3 @@ const server = http.createServer((req, res) => {
 server.listen(5500, '127.0.0.1', () => {
   console.log('Server is running on http://127.0.0.1:5500/');
 });
-
-//get- to read data
-//post- to send data
-// // put- to update data
-// // patch- to partially update data
