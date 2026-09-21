@@ -5,14 +5,18 @@
 // delete- to delete data
 
 const http = require('http');
+const fs = require('fs');
 const server= http.createServer((req,res)=>{
 
     // res.statusCode=200;
+    const d= fs.readFileSync('config.json','utf8');
     res.writeHead(200, {
-        'Content-Type': 'text/plain'
+        'Content-Type': 'text/plain',
+        'accept-charset': 'utf-8',
+        'accept-charset': 'application/json',
     });
 
-    res.end(JSON.stringify(require('./config.json')));
+    // res.end(JSON.stringify(require('./config.json')));
 
     // if(req.method==='GET'){
     //     res.end('This is a GET request')
