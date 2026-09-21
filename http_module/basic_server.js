@@ -28,6 +28,8 @@ const server = http.createServer((req, res) => {
 
     // res.statusCode = 201;
     // res.setHeader("Content-Type", "application/json");
+    // res.setHeader("Custom-Header", "text/html");
+    // res.setHeader("accept-charset", "text/plain");
     // res.writeHead(200, {
     //     'Content-Type': 'application/json',
     //     'Custom-Header': 'Aditya',
