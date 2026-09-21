@@ -4,6 +4,9 @@
 // // // patch- to partially update data
 // // delete- to delete data
 
+// parse- JSON to JS
+// stingify- JS to JSON
+
 // const http = require('http');
 // const fs = require('fs');
 // const server= http.createServer((req,res)=>{
@@ -60,20 +63,18 @@
 import http from 'http';
 import fs from 'fs';
 
-const d = fs.readFileSync('./config.json' , 'utf-8');
-const home = fs.readFileSync('./index.html' , 'utf-8');
+const data = fs.readFileSync('./config.json' , 'utf-8');
 
 const server = http.createServer((req,res) => {
     console.log('Success');
-    if (req.url === '/config'){
-        res.writeHead( 200 , {'Content-Type' : 'application/json'});
-        res.end(JSON.stringify(d));
+    if (req.url === '/'){
+        res.end('This is the home page');
     }
-    else if (req.url === '/' || req.url === '/home'){
-        res.end(home);
+    else if (req.url === '/config'){
+        res.end(JSON.stringify(data));
     }
-    else{
-    res.end('Yoooooooo');
+    else {
+        res.end('Page not found');
     }
 });
 
