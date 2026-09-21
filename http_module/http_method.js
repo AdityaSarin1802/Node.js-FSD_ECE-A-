@@ -9,15 +9,34 @@ const fs = require('fs');
 const server= http.createServer((req,res)=>{
 
     // res.statusCode=200;
-    console.log(req.url);
+        if (req.url === '/' || req.url === '/config.json') {
+            const filePath = path.join(__dirname, 'config.json');
+            fs.readFile(filePath, 'utf8', (err, data) => {
+                if (err) {
+                    console.log(err);
+                    res.writeHead(500, {
+                        'Content-Type': 'application/json'
+                    });
+                    res.end('Internal Server Error');
+                    return;
+                }
+                res.writeHead(200, {
+                    'Content-Type': 'text/plain',
+                    'accept-charset': 'utf-8',
+                    'accept-charset': 'application/json',
+                });
+                res.end(data);
+            });
+    
+        } else {
+            res.writeHead(404, {
+                'Content-Type': 'text/plain'
+            });
+            res.end('404 - Page Not Found');
+        }
     const d= fs.readFileSync('config.json','utf8');
-    res.writeHead(200, {
-        'Content-Type': 'text/plain',
-        'accept-charset': 'utf-8',
-        'accept-charset': 'application/json',
-    });
 
-    res.end(JSON.stringify(require('./config.json')));
+    // res.end(JSON.stringify(require('./config.json')));
 
     // if(req.method==='GET'){
     //     res.end('This is a GET request')
