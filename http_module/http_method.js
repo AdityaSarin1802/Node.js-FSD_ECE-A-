@@ -9,6 +9,7 @@ const fs = require('fs');
 const server= http.createServer((req,res)=>{
 
     // res.statusCode=200;
+    console.log(req.url);
     const d= fs.readFileSync('config.json','utf8');
     res.writeHead(200, {
         'Content-Type': 'text/plain',
@@ -16,7 +17,7 @@ const server= http.createServer((req,res)=>{
         'accept-charset': 'application/json',
     });
 
-    // res.end(JSON.stringify(require('./config.json')));
+    res.end(JSON.stringify(require('./config.json')));
 
     // if(req.method==='GET'){
     //     res.end('This is a GET request')
