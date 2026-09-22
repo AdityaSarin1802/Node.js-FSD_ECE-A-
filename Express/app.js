@@ -1,13 +1,19 @@
-import express from 'express'
+import express from 'express';
+import fs from 'fs';
 
-const app= express()//instance
-// console.log(app)
+const app = express();
+const home = fs.readFileSync('./index.html', 'utf-8');
 
-app.get("/home",(req,res)=>{
-    res.send("Express mai aapka swagat nhi hai")
+app.get('/', (req, res) => {
+   res.send(home);
 })
 
-const PORT = 3000
-app.listen(PORT, ()=>{
-    console.log("Server chl rha hai usko pakkad lo")
-})
+app.get('/home', (req,res) => {
+    res.send('nini times');
+});
+
+const port = 3000
+
+app.listen(port, ()=>{
+    console.log('Server is live on port.');
+});
