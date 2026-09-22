@@ -12,6 +12,8 @@ const server= http.createServer((req,res)=>{
         res.end("GET Request")
     } else if(req.method === "POST" && req.url === "/"){
         res.end("POST Request")
+    } else if(req.method === "PATCH" && req.url === "/users"){
+        res.end("PATCH Request")
     }
 })
 
