@@ -18,17 +18,57 @@
 //     console.log('Server is live on port.');
 // });
 
-import express from 'express'
+// import express from 'express';
+// import fs from 'fs';
 
-const app= express()
-app.get("api/v1/books/:id", (req,res)=>{
-    res.json({status:'Success',
-        data:{book: d}
-    })
+// const app = express();
+// const home = fs.readFileSync('./index.html', 'utf-8');
 
-    let id=req.params.id
-})
+// app.get('/', (req, res) => {
+//    res.send(home);
+// })
 
-app.listen(3000, ()=>{
-    console.log("Server is routing...")
-})
+// app.get('/home', (req,res) => {
+//     res.send('Yoooooooooo');
+// });
+
+// const port = 3000
+
+// app.listen(port, ()=>{
+//     console.log('Server is live on port.');
+// });
+
+import express from 'express';
+import fs from 'fs';
+
+const app = express();
+const bookData = fs.readFileSync('./data/books.json');
+
+JSON.parse(bookData);
+console.log(bookData.length);
+
+app.get("/api/v1/books",(req,res)=>{
+    try {
+         res.status(200).json({
+        status: "Success",
+        code: 200,
+        data: { 
+            book : bookData
+        },
+        count: bookData.length
+    });
+    } catch (error) {
+        res.status(404).json({
+            code:404,
+            message: "Error 404"
+        });
+    }
+});
+
+app.get("/api/vi/books/:id" , (req,res) => {
+    res.send(req.params.id);
+});
+
+app.listen(5500,'127.0.0.1',()=>{
+    console.log('server is running!!!!');
+});
