@@ -21,8 +21,12 @@
 import express from 'express'
 
 const app= express()
-app.get("/", (req,res)=>{
-    res.send("Home Page")
+app.get("api/v1/books/:id", (req,res)=>{
+    res.json({status:'Success',
+        data:{book: d}
+    })
+
+    let id=req.params.id
 })
 
 app.listen(3000, ()=>{
